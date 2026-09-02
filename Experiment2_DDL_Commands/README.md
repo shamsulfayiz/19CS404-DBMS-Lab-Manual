@@ -105,171 +105,181 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
-<img width="838" height="487" alt="image" src="https://github.com/user-attachments/assets/35973666-4746-46e8-b023-b1969341c42b" />
 
-## CODE
+<img width="1224" height="427" alt="image" src="https://github.com/user-attachments/assets/731d0733-f8eb-4725-a607-858bad2b77df" />
+
 ```sql
-ALTER TABLE Companies ADD designation  varchar(50);
-ALTER TABLE Companies ADD net_salary number; 
-ALTER TABLE Companies ADD dob date;
+create table Reviews(
+ReviewID INTEGER,
+ProductID INTEGER,
+Rating REAL,
+ReviewText TEXT);
 ```
 
 **Output:**
 
-<img width="978" height="374" alt="image" src="https://github.com/user-attachments/assets/4f743bb8-4a0b-4f86-8e15-65f761e1aa35" />
+<img width="1206" height="414" alt="image" src="https://github.com/user-attachments/assets/f70f1753-b7cb-4480-959e-296942c73ea0" />
 
 
 **Question 2**
-<img width="862" height="306" alt="image" src="https://github.com/user-attachments/assets/78719b35-dc38-4d18-99e9-b23f7647588f" />
+---
 
-
-```sql
-INSERT INTO Employee(EmployeeID,Name,Position) VALUES(4,'Emily White','Analyst');
-```
-
-**Output:**
-
-<img width="899" height="258" alt="image" src="https://github.com/user-attachments/assets/f988bfc4-8f8a-47bc-8df7-a5ac1ee195a0" />
-
-
-
-**Question 3**
-<img width="702" height="410" alt="image" src="https://github.com/user-attachments/assets/ba586836-36b3-4e0b-9e75-88bf51445b2a" />
-
+<img width="1208" height="385" alt="image" src="https://github.com/user-attachments/assets/cd084273-81b3-454f-9621-fca0345cad69" />
 
 ```sql
-create table products(
-product_id integer primary key,
-product_name text not null,
-list_price decimal(10,2) not null,
-discount decimal(10,2) default 0 not null ,
-check(discount>=0),
-check(list_price>=0),
-check(list_price>=discount)
+CREATE TABLE Employees(
+EmployeeID INTEGER PRIMARY KEY,
+FirstName TEXT NOT NULL,
+LastName TEXT NOT NULL,
+Email TEXT UNIQUE,
+Salary INTEGER CHECK(Salary>0),
+DepartmentID REAL,
+FOREIGN KEY(DepartmentID) REFERENCES Departments(DepartmentID)
 );
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1205" height="353" alt="image" src="https://github.com/user-attachments/assets/af002953-8b91-4fa2-a626-739d5f841d70" />
 
-**Question 4**
-<img width="692" height="282" alt="image" src="https://github.com/user-attachments/assets/f2dab9b1-b2a4-4f42-a442-9895df7c2a6a" />
+**Question 3**
+---
 
+<img width="1203" height="329" alt="image" src="https://github.com/user-attachments/assets/9dafa404-339d-441c-9f12-520be7e7e35a" />
 
 ```sql
-insert into Books(ISBN, Title, Author, Publisher, YearPublished)select ISBN, Title, Author, Publisher, YearPublished from Out_of_print_books;
+CREATE TABLE Orders(
+OrderID INTEGER PRIMARY KEY,
+OrderDate INTEGER NOT NULL,
+CustomerID INTEGER,
+FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID));
 ```
 
 **Output:**
-<img width="669" height="241" alt="image" src="https://github.com/user-attachments/assets/ab2085d6-a9ab-46ee-9a9c-dc40a3af0701" />
+
+<img width="1207" height="290" alt="image" src="https://github.com/user-attachments/assets/c048a7d7-6232-426d-a91b-6153a197a0c6" />
+
+
+**Question 4**
+---
+
+<img width="1202" height="396" alt="image" src="https://github.com/user-attachments/assets/9dfb0ef3-685b-4099-b7c8-78d130c9040c" />
+
+```sql
+Create table Members(
+MemberID INTEGER,
+MemberName TEXT,
+JoinDate DATE
+);
+```
+
+**Output:**
+
+<img width="1210" height="381" alt="image" src="https://github.com/user-attachments/assets/fdb2a752-2dec-468f-a260-a78028e6f0de" />
 
 
 **Question 5**
-<img width="681" height="438" alt="image" src="https://github.com/user-attachments/assets/5cb45841-b214-4a8e-8891-da66d0b318c4" />
+---
+
+<img width="1143" height="373" alt="image" src="https://github.com/user-attachments/assets/f51986f0-40a4-4a59-8816-0208505334f9" />
 
 
 ```sql
-insert into Customers( CustomerID ,Name,Address,City ,ZipCode)values(306,'Diana Prince' ,'Themyscira',null,null),(307, 'Bruce Wayne', 'Wayne Mano','Gotham',10007),
-(308,'Peter Parker','Queens',null,11375);
+INSERT INTO Customers(CustomerId, Name, Address, City, Zipcode)
+values(302, 'Laura Croft', '456 Elm St','Seattle',98101);
+INSERT INTO Customers(CustomerId, Name, Address, City, Zipcode) 
+values(303, 'Bruce Wayne', '789 Oak St','Gotham',10001); 
 ```
 
 **Output:**
 
-<img width="678" height="238" alt="image" src="https://github.com/user-attachments/assets/ef329611-5237-46e3-9b5a-85f30b202023" />
+<img width="1206" height="392" alt="image" src="https://github.com/user-attachments/assets/28915942-ba4b-4748-807a-4322ffdf66c6" />
 
 
 **Question 6**
-<img width="691" height="386" alt="image" src="https://github.com/user-attachments/assets/ac2570c4-fdb5-4110-a732-b345886635fd" />
+---
+
+<img width="1202" height="396" alt="image" src="https://github.com/user-attachments/assets/1d31ffea-f4d3-4d34-bde9-fd928714d1fd" />
 
 
 ```sql
-create table item( 
-item_id text primary key,
-item_desc text not null,
-rate integer not null,
-icom_id varchar(4),
-foreign key(icom_id)references company(com_id) 
-on update set null
-on delete set null
-);
-
+ALTER TABLE Student_details
+ADD ParentsNumber  number;
+ALTER TABLE Student_details 
+ADD Adhar_Number number;
 ```
 
 **Output:**
 
-<img width="684" height="306" alt="image" src="https://github.com/user-attachments/assets/822b98f4-affd-42a1-808f-5651c46c4373" />
+<img width="1212" height="400" alt="image" src="https://github.com/user-attachments/assets/eecb4144-b35b-4813-bc45-a319c763cc09" />
 
 
 **Question 7**
+---
 
-<img width="680" height="343" alt="image" src="https://github.com/user-attachments/assets/a5f71a66-5b29-4572-9fce-82b09b93e16d" />
+<img width="1170" height="344" alt="image" src="https://github.com/user-attachments/assets/e805eafa-8fd9-4d20-a082-5552b520e887" />
 
 
 ```sql
-alter table Employees add salary INTEGER check(salary>0);
+INSERT INTO Products(ProductID, ProductName, Price, Stock)
+select ProductID, ProductName, Price, Stock from Discontinued_products;
 ```
 
 **Output:**
 
-<img width="681" height="286" alt="image" src="https://github.com/user-attachments/assets/2ab03dc2-44ce-4316-b26d-b8d116dcca46" />
+<img width="1209" height="295" alt="image" src="https://github.com/user-attachments/assets/ec8850cf-e016-411a-b274-fe5e0026cddc" />
 
 
 **Question 8**
+---
 
-<img width="687" height="374" alt="image" src="https://github.com/user-attachments/assets/0bda1d18-8546-4dbd-b2c2-1852f5997696" />
+<img width="1193" height="570" alt="image" src="https://github.com/user-attachments/assets/9488dc87-c544-439e-8ae8-911f0f676070" />
 
 
 ```sql
-create table products(
-ProductID INTEGER,
-ProductName TEXT,
-Price REAL,
-Stock INTEGER
-);
-
+ALTER TABLE customer
+Add discount DECIMAL(5,2);
 ```
 
 **Output:**
 
-
-<img width="674" height="265" alt="image" src="https://github.com/user-attachments/assets/8732ba3e-92f2-46d1-8b4d-b6e524760c43" />
+<img width="839" height="370" alt="image" src="https://github.com/user-attachments/assets/95ed5993-832c-43ec-9c71-cbd5536727cc" />
 
 
 **Question 9**
+---
 
-<img width="705" height="288" alt="image" src="https://github.com/user-attachments/assets/81fae7a5-0cd8-481e-9670-8d40cb01b8ec" />
+<img width="1207" height="351" alt="image" src="https://github.com/user-attachments/assets/8c9f00ec-26a5-488d-b8b5-eef42bd03e88" />
 
 
 ```sql
-create table jobs(job_id integer, job_title text default '', min_salary integer default 8000, max_salary integer default null); 
+CREATE TABLE Products(
+ProductID INTEGER PRIMARY KEY,
+ProductName TEXT NOT NULL,
+Price REAL CHECK(Price>0),
+Stock INTEGER CHECK(Stock>=0));
 ```
 
 **Output:**
 
-<img width="682" height="348" alt="image" src="https://github.com/user-attachments/assets/a7c374d1-88f1-4cf5-a579-8db02cc8a5e9" />
+<img width="1212" height="290" alt="image" src="https://github.com/user-attachments/assets/96375e2f-5c6b-4679-bb10-79c2259e1c48" />
 
 
 **Question 10**
-
-<img width="685" height="377" alt="image" src="https://github.com/user-attachments/assets/20e47483-f6b2-41fa-a4ca-dd5cab2c29be" />
+---
+<img width="1206" height="380" alt="image" src="https://github.com/user-attachments/assets/18e66740-6761-4a28-909b-184671411192" />
 
 
 ```sql
-create table Invoices(
-InvoiceID integer primary key,
-InvoiceDate date,
-Amount real check(Amount>0),
-DueDate date check(DueDate>InvoiceDate),
-OrderID integer,
-foreign key(OrderID)References Orders(OrderID)
-);
+Insert INTO Products(Name, Category, Price,Stock)
+values('Smartphone', 'Electronics', 800, 150);
+Insert INTO Products(Name, Category, Price,Stock)
+values('Headphones', 'Accessories', 200, 300); 
 ```
 
 **Output:**
 
-
-<img width="690" height="258" alt="image" src="https://github.com/user-attachments/assets/2c164db9-fbba-41f2-ab15-8c643bc9ae43" />
+<img width="1202" height="361" alt="image" src="https://github.com/user-attachments/assets/4bf01ede-db79-44cc-aa3d-0812d534bfe7" />
 
 
 
